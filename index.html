@@ -434,18 +434,27 @@
             margin-bottom: 0.8rem;
             font-size: 1rem;
         }
+
+        .timeline-content p em {
+            font-style: normal;
+            color: #3c6e71;
+            font-weight: 500;
+            display: block;
+            margin-top: 1.5rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid #d9d9d9;
+        }
         
         .timeline-link {
             color: #3c6e71;
-            text-decoration: none;
+            text-decoration: underline;
             transition: color 0.3s ease;
-            border-bottom: 1px solid transparent;
         }
         
         .timeline-link:hover {
             color: #284b63;
-            border-bottom-color: #284b63;
         }
+
         
         /* Footer */
         footer {
@@ -510,6 +519,8 @@
             }
             
             .profile-photo {
+                object-fit: cover;
+                object-position: center top;
                 margin: 0 auto;
             }
             
@@ -564,7 +575,7 @@
     <section id="about">
         <h2 class="section-title">About Me</h2>
         <div class="about-content">
-            <img src="profile.jpg" alt="Maksym Lytovka" class="profile-photo">
+            <img src="images/headshot.png" alt="Maksym Lytovka" class="profile-photo">
             <div class="about-text">
                 <p>Add your introduction here. Talk about your background, passions, and what drives you in the field of data science and machine learning.</p>
                 <p>Describe your expertise, current focus areas, and what makes you unique as a professional. Discuss your technical capabilities and areas of specialization.</p>
@@ -573,6 +584,45 @@
             </div>
         </div>
     </section>
+
+    <!-- Experience Section -->
+    <section id="experience">
+        <h2 class="section-title">Experience</h2>
+        <div class="timeline">
+            <!-- Experience Item 1 -->
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <img src="images/datargy.png" alt="Datargy" class="timeline-image datargy">
+                    <h3>Data Scientist</h3>
+                    <h4><a href="https://datargy.com" class="timeline-link" target="_blank">Datargy</a></h4>
+                    <div class="timeline-date">January 2024 - Present</div>
+                    <p><strong>Designed and maintained advanced time series forecasting models</strong> using NeuralProphet, XGBoost, CatBoost, and RNNs to predict Day-Ahead Market electricity prices up to 40 days ahead for Ukraine and Slovakia. Powered a production system with approximately 90 active forecasts daily via Google Cloud Run.</p>
+                    <p><strong>Automated data ingestion and monitoring pipelines, reducing manual effort by over 90%</strong>, enabling timely performance reporting for analysts and executives to evaluate predictive reliability.</p>
+                    <p><strong>Led agile workflows as SCRUM Master</strong> for an 8-person cross-functional team, improving sprint efficiency by 25% through optimized backlog management and meeting structures.</p>
+                    <p><em>Key Responsibilities:</em> Model development and deployment, pipeline automation, client engagement through technical presentations, and agile team leadership.</p>
+                </div>
+            </div>
+
+            <!-- Experience Item 2 -->
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <img src="images/algozeus.png" alt="AlgoZeus" class="timeline-image">
+                    <h3>Data Engineer</h3>
+                    <h4><a href="https://www.linkedin.com/company/algozeus/" class="timeline-link">AlgoZeus</a></h4>
+                    <div class="timeline-date">July 2023 - January 2024</div>
+                    <p><strong>Engineered a scalable analytical database</strong> processing over 4.3 million OHLCV data points across 30+ cryptocurrencies, enabling robust backtesting and portfolio analytics.</p>
+                    <p><strong>Developed automated pipelines calculating key performance metrics</strong> (Sharpe ratio, Sortino, CAGR, alpha, drawdown) across thousands of signals, strategies, and portfolios to support data-driven strategy selection.</p>
+                    <p><strong>Delivered interactive dashboards and visualizations</strong> using Flask and Plotly, enhancing portfolio risk/return transparency.</p>
+                    <p><strong>Built a real-time Telegram bot on AWS Lambda</strong> for trade alerts and performance summaries, streamlining daily monitoring and decision-making.</p>
+                    <p><em>Key Responsibilities:</em> Database engineering, metric computation pipelines, dashboard development, and real-time alert system implementation.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
 
     <!-- Projects Section -->
     <section id="projects">
@@ -610,36 +660,6 @@
         </div>
     </section>
 
-    <!-- Experience Section -->
-    <section id="experience">
-        <h2 class="section-title">Experience</h2>
-        <div class="timeline">
-            <!-- Experience Item 1 -->
-            <div class="timeline-item">
-                <div class="timeline-dot"></div>
-                <div class="timeline-content">
-                    <img src="images/datargy.png" alt="Datargy" class="timeline-image datargy">
-                    <h3>Data Scientist</h3>
-                    <h4><a href="https://datargy.com" class="timeline-link" target="_blank">Datargy</a></h4>
-                    <div class="timeline-date">January 2024 - Present</div>
-                    <p>Add your role description and key achievements here.</p>
-                </div>
-            </div>
-
-            <!-- Experience Item 2 -->
-            <div class="timeline-item">
-                <div class="timeline-dot"></div>
-                <div class="timeline-content">
-                    <img src="images/algozeus.png" alt="AlgoZeus" class="timeline-image">
-                    <h3>Data Engineer</h3>
-                    <h4><a href="https://www.linkedin.com/company/algozeus/" class="timeline-link">AlgoZeus</a></h4>
-                    <div class="timeline-date">July 2023 - January 2024</div>
-                    <p>Add your role description and key achievements here.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
     <!-- Education Section -->
     <section id="education">
         <h2 class="section-title">Education</h2>
@@ -654,7 +674,8 @@
                     <h4><a href="https://www.tech.cornell.edu" class="timeline-link" target="_blank">Cornell Tech, Cornell University</a></h4>
                     <div class="timeline-date">Expected May 2026 | New York, NY</div>
                     <p><strong>GPA: 4.11</strong> | Merit Scholarship</p>
-                    <p>Relevant Coursework: Modelling Under Uncertainty, Optimization Methods, Applied Machine Learning, Machine Learning Engineering</p>
+                    <p>Intensive one-year program focused on the data-to-algorithms-to-decisions pipeline, combining machine learning, optimization, and statistics. Engaged in hands-on Studio projects solving real-world challenges for tech companies and startups in the NYC ecosystem.</p>
+                    <p><strong>Relevant Coursework:</strong> Modelling Under Uncertainty, Optimization Methods, Applied Machine Learning, Machine Learning Engineering</p>
                 </div>
             </div>
 
@@ -666,8 +687,9 @@
                     <h3>Minor in Entrepreneurship</h3>
                     <h4><a href="https://www.uva.nl" class="timeline-link" target="_blank">University of Amsterdam</a></h4>
                     <div class="timeline-date">2023 - 2025 | Amsterdam, Netherlands</div>
-                    <p>Completed as part of Bachelor's degree program at Leiden University.</p>
-                    <p>Relevant Coursework: Entrepreneurship in Practice</p>
+                    <p>Completed intensive 30 EC entrepreneurship program as part of Bachelor's degree at Leiden University. Gained hands-on experience in startup creation, business model development, and entrepreneurial thinking through the university's renowned program that has launched hundreds of startups since 2007.</p>
+                    <p><strong>Key Experience:</strong> Developed entrepreneurial skills through practical projects, workshops with industry mentors, and collaborative team-based ventures. Learned to transform creative ideas into viable business solutions.</p>
+                    <p><strong>Relevant Coursework:</strong> Entrepreneurship in Practice, Cases in Entrepreneurship, Startup Psychology</p>
                 </div>
             </div>
 
@@ -680,7 +702,9 @@
                     <h4><a href="https://www.universiteitleiden.nl" class="timeline-link" target="_blank">Leiden University</a></h4>
                     <div class="timeline-date">July 2025 | Leiden, Netherlands</div>
                     <p><strong>GPA: 3.89</strong> | cum laude</p>
-                    <p>Relevant Coursework: Statistics, Linear Algebra, Machine Learning, Deep Learning, Computer Vision, Reinforcement Learning</p>
+                    <p>Comprehensive three-year program combining strong foundations in computer science, mathematics, and statistics with advanced knowledge in machine learning, cognitive science, and AI. Program hosted by the Leiden Institute of Advanced Computer Science (LIACS), with teaching directly inspired by cutting-edge research.</p>
+                    <p><strong>Key Focus Areas:</strong> Developed expertise in algorithmic thinking, data modeling, and building intelligent systems. Completed research-oriented bachelor thesis in the topic of computer vision project with faculty research groups.</p>
+                    <p><strong>Relevant Coursework:</strong> Statistics, Linear Algebra, Machine Learning, Deep Learning, Computer Vision, Reinforcement Learning, Human-Robot Interaction, Autonomous Systems</p>
                 </div>
             </div>
             
