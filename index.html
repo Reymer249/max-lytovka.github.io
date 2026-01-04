@@ -419,6 +419,10 @@
             padding: 2.5rem 0 2.5rem 2rem;
             transition: all 0.3s ease;
             position: relative;
+            display: grid;
+            grid-template-columns: 200px 1fr;
+            gap: 2rem;
+            align-items: start;
         }
 
         .project-item:first-child {
@@ -433,6 +437,29 @@
 
         .project-item.hidden {
             display: none;
+        }
+        
+        .project-image-container {
+            width: 200px;
+            height: 150px;
+            overflow: hidden;
+            border: 1px solid #d9d9d9;
+            transition: all 0.3s ease;
+        }
+        
+        .project-image-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+        
+        .project-image-container:hover img {
+            transform: scale(1.05);
+        }
+        
+        .project-main-content {
+            flex: 1;
         }
 
         .project-header {
@@ -515,6 +542,28 @@
         }
 
         .project-link i {
+            font-size: 0.8rem;
+        }
+        
+        .project-external-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #284b63;
+            text-decoration: none;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-size: 0.85rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            letter-spacing: 0.3px;
+            border-bottom: 1px solid transparent;
+        }
+
+        .project-external-link:hover {
+            border-bottom-color: #284b63;
+        }
+
+        .project-external-link i {
             font-size: 0.8rem;
         }
 
@@ -986,7 +1035,9 @@
                 type: "Professional",
                 description: "Advanced time series forecasting models using NeuralProphet, XGBoost, CatBoost, and RNNs to predict electricity prices. Deployed on Google Cloud Run with automated monitoring pipelines.",
                 skills: ["Python", "Machine Learning", "Time Series", "XGBoost", "Neural Networks", "Google Cloud", "Data Pipeline"],
-                linkedTo: ["exp-datargy"]
+                linkedTo: ["exp-datargy"],
+                image: "project1.jpg", // Add your project image path
+                projectUrl: "https://datargy.com" // Add your project URL
             },
             {
                 id: 2,
@@ -994,7 +1045,9 @@
                 type: "Professional",
                 description: "Scalable analytical database processing 4.3M+ OHLCV data points with automated performance metrics calculation and interactive dashboards.",
                 skills: ["Python", "SQL", "Data Engineering", "Flask", "Plotly", "AWS Lambda", "Real-time Systems"],
-                linkedTo: ["exp-algozeus"]
+                linkedTo: ["exp-algozeus"],
+                image: "project2.jpg",
+                projectUrl: "#"
             },
             {
                 id: 3,
@@ -1002,7 +1055,9 @@
                 type: "Academic",
                 description: "Bachelor thesis research project in computer vision, working with faculty research groups at LIACS.",
                 skills: ["Python", "Computer Vision", "Deep Learning", "Research", "PyTorch"],
-                linkedTo: ["edu-leiden"]
+                linkedTo: ["edu-leiden"],
+                image: "project3.jpg",
+                projectUrl: "#"
             },
             {
                 id: 4,
@@ -1010,7 +1065,9 @@
                 type: "Academic",
                 description: "Developed optimization methods for machine learning models as part of Cornell Tech coursework, focusing on gradient-based and stochastic optimization techniques.",
                 skills: ["Python", "Optimization", "Machine Learning", "Mathematical Modeling", "NumPy"],
-                linkedTo: ["edu-cornell"]
+                linkedTo: ["edu-cornell"],
+                image: "project1.jpg",
+                projectUrl: "#"
             },
             {
                 id: 5,
@@ -1018,7 +1075,9 @@
                 type: "Academic",
                 description: "Created and validated business model for a tech startup as part of entrepreneurship minor, including market research and financial projections.",
                 skills: ["Business Strategy", "Entrepreneurship", "Market Analysis", "Financial Modeling"],
-                linkedTo: ["edu-uva"]
+                linkedTo: ["edu-uva"],
+                image: "project2.jpg",
+                projectUrl: "#"
             }
         ];
 
@@ -1083,22 +1142,41 @@
                         </a>
                     `;
                 }).join('');
+                
+                const externalLink = project.projectUrl ? `
+                    <a href="${project.projectUrl}" class="project-external-link" target="_blank" rel="noopener noreferrer">
+                        <i class="fas fa-external-link-alt"></i>
+                        View Project
+                    </a>
+                ` : '';
 
                 return `
                     <div class="project-item">
-                        <div class="project-header">
-                            <div>
-                                <h3 class="project-title">${project.title}</h3>
+                        ${project.image ? `
+                            <div class="project-image-container">
+                                <img src="${project.image}" alt="${project.title}">
                             </div>
-                            <span class="project-type">${project.type}</span>
+                        ` : ''}
+                        <div class="project-main-content">
+                            <div class="project-header">
+                                <div>
+                                    <h3 class="project-title">${project.title}</h3>
+                                </div>
+                                <span class="project-type">${project.type}</span>
+                            </div>
+                            <p class="project-description">${project.description}</p>
+                            <div class="project-skills">
+                                ${project.skills.map(skill => 
+                                    `<span class="project-skill-tag">${skill}</span>`
+                                ).join('')}
+                            </div>
+                            ${links || externalLink ? `
+                                <div class="project-links">
+                                    ${externalLink}
+                                    ${links}
+                                </div>
+                            ` : ''}
                         </div>
-                        <p class="project-description">${project.description}</p>
-                        <div class="project-skills">
-                            ${project.skills.map(skill => 
-                                `<span class="project-skill-tag">${skill}</span>`
-                            ).join('')}
-                        </div>
-                        ${links ? `<div class="project-links">${links}</div>` : ''}
                     </div>
                 `;
             }).join('');
