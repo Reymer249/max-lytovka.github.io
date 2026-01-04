@@ -5,7 +5,794 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Maksym Lytovka - Portfolio</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="styles.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Georgia', 'Times New Roman', serif;
+            line-height: 1.8;
+            color: #353535;
+            background: #ffffff;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: #ffffff;
+            border-bottom: 1px solid #d9d9d9;
+            z-index: 1000;
+            transition: box-shadow 0.3s ease;
+        }
+
+        nav.scrolled {
+            box-shadow: 0 2px 8px rgba(53, 53, 53, 0.1);
+        }
+
+        nav .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.8rem 2rem;
+        }
+
+        nav .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #284b63;
+            letter-spacing: 0.5px;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2.5rem;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #353535;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-size: 0.95rem;
+            font-weight: 500;
+            letter-spacing: 0.3px;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        nav ul a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #284b63;
+            transition: width 0.3s ease;
+        }
+
+        nav a:hover {
+            color: #284b63;
+        }
+
+        nav ul a:hover::after {
+            width: 100%;
+        }
+
+        /* Hamburger Menu */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            cursor: pointer;
+            width: 30px;
+            height: 24px;
+            position: relative;
+        }
+
+        .hamburger span {
+            width: 100%;
+            height: 3px;
+            background: #284b63;
+            transition: all 0.3s ease;
+            position: absolute;
+            left: 0;
+        }
+
+        .hamburger span:nth-child(1) {
+            top: 0;
+        }
+
+        .hamburger span:nth-child(2) {
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .hamburger span:nth-child(3) {
+            bottom: 0;
+        }
+
+        .hamburger.active span:nth-child(1) {
+            top: 50%;
+            transform: translateY(-50%) rotate(45deg);
+        }
+
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.active span:nth-child(3) {
+            bottom: 50%;
+            transform: translateY(50%) rotate(-45deg);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #284b63;
+            color: #ffffff;
+            text-align: center;
+            position: relative;
+            border-bottom: 3px solid #3c6e71;
+        }
+
+        .hero-content {
+            z-index: 1;
+            max-width: 800px;
+            padding: 2rem;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+            font-weight: 400;
+            letter-spacing: 1px;
+            opacity: 0;
+            animation: fadeInUp 1s ease forwards;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2.5rem;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-weight: 300;
+            letter-spacing: 0.5px;
+            opacity: 0;
+            animation: fadeInUp 1s ease 0.2s forwards;
+        }
+
+        .hero-divider {
+            width: 60px;
+            height: 2px;
+            background: #ffffff;
+            margin: 2rem auto;
+            opacity: 0;
+            animation: fadeIn 1s ease 0.4s forwards;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            margin-top: 2rem;
+            opacity: 0;
+            animation: fadeIn 1s ease 0.6s forwards;
+        }
+
+        .social-icons a {
+            width: 45px;
+            height: 45px;
+            border: 2px solid #ffffff;
+            border-radius: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #ffffff;
+            font-size: 1.2rem;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .social-icons a:hover {
+            background: #ffffff;
+            color: #284b63;
+        }
+
+        /* Section Styles */
+        section {
+            padding: 6rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            color: #284b63;
+            margin-bottom: 1rem;
+            font-weight: 400;
+            letter-spacing: 0.5px;
+            position: relative;
+            padding-bottom: 1rem;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 2px;
+            background: #3c6e71;
+        }
+
+        /* About Me Section */
+        #about {
+            background: #ffffff;
+            border-top: 1px solid #d9d9d9;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 300px 1fr;
+            gap: 4rem;
+            align-items: start;
+            margin-top: 2rem;
+        }
+
+        .profile-photo {
+            width: 300px;
+            height: 300px;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .profile-photo:hover {
+            transform: scale(1.05);
+        }
+
+        .about-text p {
+            color: #353535;
+            margin-bottom: 1.5rem;
+            font-size: 1.05rem;
+            text-align: justify;
+        }
+
+        .download-btn {
+            display: inline-block;
+            margin-top: 2rem;
+            padding: 0.9rem 2.5rem;
+            background: #284b63;
+            color: #ffffff;
+            text-decoration: none;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-weight: 500;
+            font-size: 0.95rem;
+            letter-spacing: 0.5px;
+            transition: all 0.3s ease;
+            border: 2px solid #284b63;
+        }
+
+        .download-btn:hover {
+            background: #ffffff;
+            color: #284b63;
+        }
+
+        /* Skills & Projects Section */
+        #skills-projects {
+            background: #ffffff;
+            border-top: 1px solid #d9d9d9;
+        }
+
+        .skills-search-bar {
+            margin: 2rem 0 2.5rem 0;
+            position: relative;
+        }
+
+        .skills-search-bar input {
+            width: 100%;
+            padding: 0.9rem 1rem 0.9rem 2.8rem;
+            font-size: 1rem;
+            border: 1px solid #d9d9d9;
+            border-radius: 0;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            transition: all 0.3s ease;
+            background: #ffffff;
+        }
+
+        .skills-search-bar input:focus {
+            outline: none;
+            border-color: #284b63;
+            box-shadow: none;
+        }
+
+        .skills-search-bar i {
+            position: absolute;
+            left: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #353535;
+            font-size: 0.95rem;
+        }
+
+        .skills-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.7rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .skill-tag {
+            padding: 0.5rem 1.1rem;
+            background: #ffffff;
+            border: 1px solid #d9d9d9;
+            border-radius: 0;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-size: 0.9rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #353535;
+        }
+
+        .skill-tag:hover {
+            background: #f8f8f8;
+            border-color: #353535;
+        }
+
+        .skill-tag.selected {
+            background: #284b63;
+            color: #ffffff;
+            border-color: #284b63;
+        }
+
+        .skill-tag.hidden {
+            display: none;
+        }
+
+        .skill-count {
+            background: rgba(60, 110, 113, 0.15);
+            color: #3c6e71;
+            border-radius: 0;
+            padding: 0.1rem 0.4rem;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        .skill-tag.selected .skill-count {
+            background: rgba(255, 255, 255, 0.25);
+            color: #ffffff;
+        }
+
+        .clear-filters {
+            display: inline-block;
+            padding: 0.6rem 1.3rem;
+            background: #ffffff;
+            border: 1px solid #d9d9d9;
+            border-radius: 0;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-size: 0.9rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-bottom: 2rem;
+            color: #353535;
+        }
+
+        .clear-filters:hover {
+            background: #f8f8f8;
+            border-color: #353535;
+        }
+
+        .clear-filters.hidden {
+            display: none;
+        }
+
+        .projects-list {
+            display: grid;
+            gap: 0;
+            margin-top: 2rem;
+        }
+
+        .project-item {
+            background: #ffffff;
+            border: none;
+            border-left: 3px solid transparent;
+            border-bottom: 1px solid #d9d9d9;
+            border-radius: 0;
+            padding: 2.5rem 0 2.5rem 2rem;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .project-item:first-child {
+            border-top: 1px solid #d9d9d9;
+        }
+
+        .project-item:hover {
+            box-shadow: none;
+            background: #fafafa;
+            border-left-color: #284b63;
+        }
+
+        .project-item.hidden {
+            display: none;
+        }
+
+        .project-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: start;
+            margin-bottom: 1rem;
+            gap: 1rem;
+        }
+
+        .project-title {
+            color: #284b63;
+            font-size: 1.5rem;
+            font-weight: 400;
+            margin-bottom: 0.3rem;
+        }
+
+        .project-type {
+            background: transparent;
+            color: #3c6e71;
+            padding: 0.2rem 0.6rem;
+            border: 1px solid #d9d9d9;
+            border-radius: 0;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            white-space: nowrap;
+        }
+
+        .project-description {
+            color: #353535;
+            margin-bottom: 1.5rem;
+            font-size: 1rem;
+            line-height: 1.8;
+        }
+
+        .project-skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .project-skill-tag {
+            padding: 0.3rem 0.8rem;
+            background: transparent;
+            border: 1px solid #d9d9d9;
+            border-radius: 0;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-size: 0.8rem;
+            font-weight: 500;
+            color: #353535;
+        }
+
+        .project-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            padding-top: 1rem;
+            border-top: 1px solid #e8e8e8;
+        }
+
+        .project-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #3c6e71;
+            text-decoration: none;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-size: 0.85rem;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            letter-spacing: 0.3px;
+        }
+
+        .project-link:hover {
+            color: #284b63;
+        }
+
+        .project-link i {
+            font-size: 0.8rem;
+        }
+
+        .no-results {
+            text-align: center;
+            padding: 4rem 2rem;
+            color: #353535;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-size: 1rem;
+            border-top: 1px solid #d9d9d9;
+        }
+
+        .no-results.hidden {
+            display: none;
+        }
+
+        .no-results i {
+            color: #d9d9d9;
+        }
+
+        /* Experience Section */
+        #experience, #education {
+            background: #ffffff;
+            border-top: 1px solid #d9d9d9;
+        }
+
+        .timeline {
+            position: relative;
+            padding: 2rem 0;
+            margin-top: 2rem;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 2px;
+            height: 100%;
+            background: #3c6e71;
+        }
+
+        .timeline-item {
+            display: flex;
+            margin-bottom: 4rem;
+            position: relative;
+            opacity: 0;
+            animation: fadeInTimeline 0.8s ease forwards;
+        }
+
+        .timeline-item:nth-child(odd) {
+            flex-direction: row;
+        }
+
+        .timeline-item:nth-child(even) {
+            flex-direction: row-reverse;
+        }
+
+        .timeline-content {
+            width: 45%;
+            background: #ffffff;
+            padding: 2.5rem;
+            border: 1px solid #d9d9d9;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .timeline-content:hover {
+            box-shadow: 0 4px 12px rgba(53, 53, 53, 0.1);
+        }
+
+        .timeline-dot {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 16px;
+            height: 16px;
+            background: #284b63;
+            border: 3px solid #ffffff;
+            box-shadow: 0 0 0 2px #3c6e71;
+            z-index: 1;
+        }
+
+        .timeline-image {
+            width: 100%;
+            height: 145px;
+            object-fit: contain;
+            object-position: center;
+            margin-bottom: 1.5rem;
+            background: #ffffff;
+        }
+
+        .timeline-image.tall {
+            height: 240px;
+        }
+
+        .timeline-image.upml {
+            height: 280px;
+        }
+
+        .timeline-image.med {
+            height: 190px;
+        }
+
+        .timeline-image.uva {
+            height: 125px;
+        }
+
+        .timeline-image.datargy {
+            height: 140px;
+        }
+
+        .timeline-content h3 {
+            color: #284b63;
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            font-weight: 400;
+        }
+
+        .timeline-content h4 {
+            color: #353535;
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+            font-weight: 400;
+        }
+
+        .timeline-date {
+            color: #3c6e71;
+            font-style: italic;
+            margin-bottom: 1.5rem;
+            font-size: 0.95rem;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        }
+
+        .timeline-content p {
+            color: #353535;
+            margin-bottom: 0.8rem;
+            font-size: 1rem;
+        }
+        
+        .timeline-content p strong {
+            font-weight: 600;
+        }
+
+        .timeline-content p em {
+            font-style: normal;
+            color: #3c6e71;
+            font-weight: 500;
+            display: block;
+            margin-top: 1.5rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid #d9d9d9;
+        }
+
+        .timeline-link {
+            color: #3c6e71;
+            text-decoration: underline;
+            transition: color 0.3s ease;
+        }
+
+        .timeline-link:hover {
+            color: #284b63;
+        }
+
+        /* Footer */
+        footer {
+            background: #353535;
+            color: #d9d9d9;
+            text-align: center;
+            padding: 2.5rem;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-size: 0.95rem;
+            border-top: 2px solid #3c6e71;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInTimeline {
+            from {
+                opacity: 0;
+                transform: translateX(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hamburger {
+                display: flex;
+            }
+            
+            nav ul {
+                position: fixed;
+                top: 60px;
+                right: -100%;
+                width: 100%;
+                height: calc(100vh - 60px);
+                background: #ffffff;
+                flex-direction: column;
+                padding: 2rem;
+                gap: 2rem;
+                transition: right 0.3s ease;
+                box-shadow: -2px 0 8px rgba(53, 53, 53, 0.1);
+            }
+            
+            nav ul.active {
+                right: 0;
+            }
+            
+            nav ul li {
+                width: 100%;
+                text-align: center;
+            }
+            
+            nav ul a {
+                font-size: 1.1rem;
+                display: block;
+                padding: 0.5rem;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero p {
+                font-size: 1.1rem;
+            }
+            
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .profile-photo {
+                object-fit: cover;
+                object-position: center top;
+                margin: 0 auto;
+            }
+            
+            .timeline::before {
+                left: 20px;
+            }
+            
+            .timeline-item {
+                flex-direction: column !important;
+            }
+            
+            .timeline-content {
+                width: calc(100% - 60px);
+                margin-left: 60px;
+            }
+            
+            .timeline-dot {
+                left: 20px;
+            }
+        }
+    </style>
 </head>
 <body>
     <!-- Navigation -->
@@ -19,7 +806,7 @@
             </div>
             <ul id="nav-menu">
                 <li><a href="#about">About Me</a></li>
-                <li><a href="#projects">Projects</a></li>
+                <li><a href="#skills-projects">Skills & Projects</a></li>
                 <li><a href="#experience">Experience</a></li>
                 <li><a href="#education">Education</a></li>
             </ul>
@@ -54,12 +841,34 @@
         </div>
     </section>
 
+    <!-- Skills & Projects Section -->
+    <section id="skills-projects">
+        <h2 class="section-title">Skills & Projects</h2>
+        
+        <div class="skills-search-bar">
+            <i class="fas fa-search"></i>
+            <input type="text" id="skillSearch" placeholder="Search skills...">
+        </div>
+
+        <div class="skills-container" id="skillsContainer"></div>
+
+        <button class="clear-filters hidden" id="clearFilters">
+            <i class="fas fa-times"></i> Clear All Filters
+        </button>
+
+        <div class="projects-list" id="projectsList"></div>
+        
+        <div class="no-results hidden" id="noResults">
+            <i class="fas fa-search" style="font-size: 2rem; margin-bottom: 1rem; display: block;"></i>
+            No projects match your selected skills
+        </div>
+    </section>
+
     <!-- Experience Section -->
     <section id="experience">
         <h2 class="section-title">Experience</h2>
         <div class="timeline">
-            <!-- Experience Item 1 -->
-            <div class="timeline-item">
+            <div class="timeline-item" id="exp-datargy">
                 <div class="timeline-dot"></div>
                 <div class="timeline-content">
                     <img src="images/datargy.png" alt="Datargy" class="timeline-image datargy">
@@ -73,8 +882,7 @@
                 </div>
             </div>
 
-            <!-- Experience Item 2 -->
-            <div class="timeline-item">
+            <div class="timeline-item" id="exp-algozeus">
                 <div class="timeline-dot"></div>
                 <div class="timeline-content">
                     <img src="images/algozeus.png" alt="AlgoZeus" class="timeline-image">
@@ -91,49 +899,12 @@
         </div>
     </section>
 
-    <!-- Projects Section -->
-    <section id="projects">
-        <h2 class="section-title">Projects</h2>
-        <div class="projects-grid">
-            <!-- Project Card 1 -->
-            <div class="project-card">
-                <img src="project1.jpg" alt="Project 1" class="project-image">
-                <div class="project-content">
-                    <h3>Project Title 1</h3>
-                    <p>Add your project description here. Explain what the project does, technologies used, and key achievements or outcomes.</p>
-                    <a href="#" class="project-link">View Project →</a>
-                </div>
-            </div>
-
-            <!-- Project Card 2 -->
-            <div class="project-card">
-                <img src="project2.jpg" alt="Project 2" class="project-image">
-                <div class="project-content">
-                    <h3>Project Title 2</h3>
-                    <p>Add your project description here. Explain what the project does, technologies used, and key achievements or outcomes.</p>
-                    <a href="#" class="project-link">View Project →</a>
-                </div>
-            </div>
-
-            <!-- Project Card 3 -->
-            <div class="project-card">
-                <img src="project3.jpg" alt="Project 3" class="project-image">
-                <div class="project-content">
-                    <h3>Project Title 3</h3>
-                    <p>Add your project description here. Explain what the project does, technologies used, and key achievements or outcomes.</p>
-                    <a href="#" class="project-link">View Project →</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
     <!-- Education Section -->
     <section id="education">
         <h2 class="section-title">Education</h2>
         
         <div class="timeline">
-            <!-- Education Item 1 -->
-            <div class="timeline-item">
+            <div class="timeline-item" id="edu-cornell">
                 <div class="timeline-dot"></div>
                 <div class="timeline-content">
                     <img src="images/cornell.jpg" alt="Cornell Tech" class="timeline-image">
@@ -146,8 +917,7 @@
                 </div>
             </div>
 
-            <!-- Education Item 2 -->
-            <div class="timeline-item">
+            <div class="timeline-item" id="edu-uva">
                 <div class="timeline-dot"></div>
                 <div class="timeline-content">
                     <img src="images/uva2.jpg" alt="University of Amsterdam" class="timeline-image uva">
@@ -160,8 +930,7 @@
                 </div>
             </div>
 
-            <!-- Education Item 3 -->
-            <div class="timeline-item">
+            <div class="timeline-item" id="edu-leiden">
                 <div class="timeline-dot"></div>
                 <div class="timeline-content">
                     <img src="images/leiden.jpg" alt="Leiden University" class="timeline-image med">
@@ -169,14 +938,12 @@
                     <h4><a href="https://www.universiteitleiden.nl" class="timeline-link" target="_blank">Leiden University</a></h4>
                     <div class="timeline-date">July 2025 | Leiden, Netherlands</div>
                     <p><strong>GPA: 3.89</strong> | cum laude</p>
-                    <p>Comprehensive three-year program combining strong foundations in computer science, mathematics, and statistics with advanced knowledge in machine learning, cognitive science, and AI. Program hosted by the Leiden Institute of Advanced Computer Science (LIACS), with teaching directly inspired by cutting-edge research.</p>
-                    <p><strong>Key Focus Areas:</strong> Developed expertise in algorithmic thinking, data modeling, and building intelligent systems. Completed research-oriented bachelor thesis in the topic of computer vision project with faculty research groups.</p>
+                    <p>Comprehensive three-year program combining strong foundations in computer science, mathematics, and statistics with advanced knowledge in machine learning, cognitive science, and AI.</p>
                     <p><strong>Relevant Coursework:</strong> Statistics, Linear Algebra, Machine Learning, Deep Learning, Computer Vision, Reinforcement Learning, Human-Robot Interaction, Autonomous Systems</p>
                 </div>
             </div>
             
-            <!-- Education Item 4 -->
-            <div class="timeline-item">
+            <div class="timeline-item" id="edu-ejm">
                 <div class="timeline-dot"></div>
                 <div class="timeline-content">
                     <img src="images/ejm.jpg" alt="École Jeannine Manuel" class="timeline-image tall">
@@ -189,8 +956,7 @@
                 </div>
             </div>
             
-            <!-- Education Item 5 -->
-            <div class="timeline-item">
+            <div class="timeline-item" id="edu-upml">
                 <div class="timeline-dot"></div>
                 <div class="timeline-content">
                     <img src="images/upml.jpg" alt="Ukrainian Physics and Mathematics Lyceum" class="timeline-image upml">
@@ -211,6 +977,228 @@
         <p>&copy; 2026 Maksym Lytovka. All rights reserved.</p>
     </footer>
 
-    <script src="script.js"></script>
+    <script>
+        // Sample data structure - Replace with your actual data
+        const projectsData = [
+            {
+                id: 1,
+                title: "Electricity Price Forecasting System",
+                type: "Professional",
+                description: "Advanced time series forecasting models using NeuralProphet, XGBoost, CatBoost, and RNNs to predict electricity prices. Deployed on Google Cloud Run with automated monitoring pipelines.",
+                skills: ["Python", "Machine Learning", "Time Series", "XGBoost", "Neural Networks", "Google Cloud", "Data Pipeline"],
+                linkedTo: ["exp-datargy"]
+            },
+            {
+                id: 2,
+                title: "Cryptocurrency Analytics Platform",
+                type: "Professional",
+                description: "Scalable analytical database processing 4.3M+ OHLCV data points with automated performance metrics calculation and interactive dashboards.",
+                skills: ["Python", "SQL", "Data Engineering", "Flask", "Plotly", "AWS Lambda", "Real-time Systems"],
+                linkedTo: ["exp-algozeus"]
+            },
+            {
+                id: 3,
+                title: "Computer Vision Research Project",
+                type: "Academic",
+                description: "Bachelor thesis research project in computer vision, working with faculty research groups at LIACS.",
+                skills: ["Python", "Computer Vision", "Deep Learning", "Research", "PyTorch"],
+                linkedTo: ["edu-leiden"]
+            },
+            {
+                id: 4,
+                title: "ML Optimization Framework",
+                type: "Academic",
+                description: "Developed optimization methods for machine learning models as part of Cornell Tech coursework, focusing on gradient-based and stochastic optimization techniques.",
+                skills: ["Python", "Optimization", "Machine Learning", "Mathematical Modeling", "NumPy"],
+                linkedTo: ["edu-cornell"]
+            },
+            {
+                id: 5,
+                title: "Startup Business Model Canvas",
+                type: "Academic",
+                description: "Created and validated business model for a tech startup as part of entrepreneurship minor, including market research and financial projections.",
+                skills: ["Business Strategy", "Entrepreneurship", "Market Analysis", "Financial Modeling"],
+                linkedTo: ["edu-uva"]
+            }
+        ];
+
+        // Extract all unique skills
+        const allSkills = [...new Set(projectsData.flatMap(p => p.skills))].sort();
+
+        // State management
+        let selectedSkills = new Set();
+
+        // Initialize the page
+        function init() {
+            renderSkills();
+            renderProjects();
+            setupEventListeners();
+        }
+
+        // Render skill tags
+        function renderSkills() {
+            const container = document.getElementById('skillsContainer');
+            container.innerHTML = allSkills.map(skill => {
+                const count = projectsData.filter(p => p.skills.includes(skill)).length;
+                return `
+                    <div class="skill-tag" data-skill="${skill}">
+                        ${skill}
+                        <span class="skill-count">${count}</span>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        // Render projects
+        function renderProjects() {
+            const container = document.getElementById('projectsList');
+            const noResults = document.getElementById('noResults');
+            
+            const filteredProjects = selectedSkills.size === 0 
+                ? projectsData 
+                : projectsData.filter(project => 
+                    [...selectedSkills].every(skill => project.skills.includes(skill))
+                );
+
+            if (filteredProjects.length === 0) {
+                container.innerHTML = '';
+                noResults.classList.remove('hidden');
+                return;
+            }
+
+            noResults.classList.add('hidden');
+            container.innerHTML = filteredProjects.map(project => {
+                const links = project.linkedTo.map(id => {
+                    const element = document.getElementById(id);
+                    if (!element) return '';
+                    
+                    const isExperience = id.startsWith('exp-');
+                    const title = element.querySelector('h3').textContent;
+                    const icon = isExperience ? 'briefcase' : 'graduation-cap';
+                    
+                    return `
+                        <a href="#${id}" class="project-link">
+                            <i class="fas fa-${icon}"></i>
+                            ${title}
+                        </a>
+                    `;
+                }).join('');
+
+                return `
+                    <div class="project-item">
+                        <div class="project-header">
+                            <div>
+                                <h3 class="project-title">${project.title}</h3>
+                            </div>
+                            <span class="project-type">${project.type}</span>
+                        </div>
+                        <p class="project-description">${project.description}</p>
+                        <div class="project-skills">
+                            ${project.skills.map(skill => 
+                                `<span class="project-skill-tag">${skill}</span>`
+                            ).join('')}
+                        </div>
+                        ${links ? `<div class="project-links">${links}</div>` : ''}
+                    </div>
+                `;
+            }).join('');
+        }
+
+        // Setup event listeners
+        function setupEventListeners() {
+            // Skill tag click
+            document.getElementById('skillsContainer').addEventListener('click', (e) => {
+                const skillTag = e.target.closest('.skill-tag');
+                if (!skillTag) return;
+
+                const skill = skillTag.dataset.skill;
+                
+                if (selectedSkills.has(skill)) {
+                    selectedSkills.delete(skill);
+                    skillTag.classList.remove('selected');
+                } else {
+                    selectedSkills.add(skill);
+                    skillTag.classList.add('selected');
+                }
+
+                updateClearButton();
+                renderProjects();
+            });
+
+            // Search functionality
+            document.getElementById('skillSearch').addEventListener('input', (e) => {
+                const searchTerm = e.target.value.toLowerCase();
+                const skillTags = document.querySelectorAll('.skill-tag');
+
+                skillTags.forEach(tag => {
+                    const skill = tag.dataset.skill.toLowerCase();
+                    if (skill.includes(searchTerm)) {
+                        tag.classList.remove('hidden');
+                    } else {
+                        tag.classList.add('hidden');
+                    }
+                });
+            });
+
+            // Clear filters
+            document.getElementById('clearFilters').addEventListener('click', () => {
+                selectedSkills.clear();
+                document.querySelectorAll('.skill-tag').forEach(tag => {
+                    tag.classList.remove('selected');
+                });
+                updateClearButton();
+                renderProjects();
+            });
+
+            // Navigation scroll effect
+            window.addEventListener('scroll', function() {
+                const nav = document.getElementById('nav');
+                if (window.scrollY > 50) {
+                    nav.classList.add('scrolled');
+                } else {
+                    nav.classList.remove('scrolled');
+                }
+            });
+
+            // Hamburger menu
+            const hamburger = document.getElementById('hamburger');
+            const navMenu = document.getElementById('nav-menu');
+            
+            hamburger.addEventListener('click', function() {
+                hamburger.classList.toggle('active');
+                navMenu.classList.toggle('active');
+            });
+
+            // Close menu on link click
+            document.querySelectorAll('#nav-menu a').forEach(link => {
+                link.addEventListener('click', function() {
+                    hamburger.classList.remove('active');
+                    navMenu.classList.remove('active');
+                });
+            });
+
+            // Close menu on outside click
+            document.addEventListener('click', function(event) {
+                const isClickInsideNav = event.target.closest('nav');
+                if (!isClickInsideNav && navMenu.classList.contains('active')) {
+                    hamburger.classList.remove('active');
+                    navMenu.classList.remove('active');
+                }
+            });
+        }
+
+        // Update clear button visibility
+        function updateClearButton() {
+            const clearButton = document.getElementById('clearFilters');
+            if (selectedSkills.size > 0) {
+                clearButton.classList.remove('hidden');
+            } else {
+                clearButton.classList.add('hidden');
+            }
+        }
+
+        // Initialize on load
+        init();
+    </script>
 </body>
 </html>
