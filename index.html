@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Maksym Lytovka - Portfolio</title>
+    <title>Max Lytovka - Portfolio</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
@@ -738,6 +738,88 @@
             font-size: 0.95rem;
             border-top: 2px solid #3c6e71;
         }
+        
+        /* Small Wins Section */
+        #wins {
+            background: #f8f8f8;
+            border-top: 1px solid #d9d9d9;
+        }
+        
+        .wins-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .win-card {
+            background: #ffffff;
+            border: 1px solid #d9d9d9;
+            padding: 0;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .win-card:hover {
+            box-shadow: 0 4px 12px rgba(53, 53, 53, 0.1);
+        }
+        
+        .win-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-bottom: 1px solid #d9d9d9;
+        }
+        
+        .win-content {
+            padding: 2rem;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .win-date {
+            color: #3c6e71;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+        }
+        
+        .win-title {
+            color: #284b63;
+            font-size: 1.3rem;
+            font-weight: 400;
+            margin-bottom: 1rem;
+            line-height: 1.4;
+        }
+        
+        .win-description {
+            color: #353535;
+            font-size: 1rem;
+            line-height: 1.8;
+            margin-bottom: 0;
+        }
+        
+        .win-icon {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            color: #ffffff;
+            background: rgba(40, 75, 99, 0.8);
+            font-size: 1.2rem;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+        }
 
         /* Animations */
         @keyframes fadeIn {
@@ -840,6 +922,10 @@
             .timeline-dot {
                 left: 20px;
             }
+            
+            .wins-grid {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
@@ -858,6 +944,7 @@
                 <li><a href="#skills-projects">Skills & Projects</a></li>
                 <li><a href="#experience">Experience</a></li>
                 <li><a href="#education">Education</a></li>
+                <li><a href="#wins">Small Wins</a></li>
             </ul>
         </div>
     </nav>
@@ -865,7 +952,7 @@
     <!-- Hero Section -->
     <section class="hero">
         <div class="hero-content">
-            <h1>Maksym Lytovka</h1>
+            <h1>Max Lytovka</h1>
             <div class="hero-divider"></div>
             <p>Data Scientist | Machine Learning Engineer | Researcher</p>
             <div class="social-icons">
@@ -880,7 +967,7 @@
     <section id="about">
         <h2 class="section-title">About Me</h2>
         <div class="about-content">
-            <img src="images/headshot.png" alt="Maksym Lytovka" class="profile-photo">
+            <img src="images/headshot.png" alt="Max Lytovka" class="profile-photo">
             <div class="about-text">
                 <p>Add your introduction here. Talk about your background, passions, and what drives you in the field of data science and machine learning.</p>
                 <p>Describe your expertise, current focus areas, and what makes you unique as a professional. Discuss your technical capabilities and areas of specialization.</p>
@@ -1021,9 +1108,60 @@
         </div>
     </section>
 
+    <!-- Small Wins Section -->
+    <section id="wins">
+        <h2 class="section-title">Small Wins</h2>
+        <div class="wins-grid">
+            <!-- Win Card 1 -->
+            <div class="win-card">
+                <img src="images/mle-win.png" alt="Top 10 in Class" class="win-image">
+                <i class="fas fa-trophy win-icon"></i>
+                <div class="win-content">
+                    <div class="win-date">Fall 2025</div>
+                    <h3 class="win-title">Top 10 in Class</h3>
+                    <p class="win-description">Received an email from my professor congratulating me for being in the <strong>top 10 students</strong> in the <strong>Machine Learning Engineering</strong> class. A reminder of the value of steady, consistent work.</p>
+                </div>
+            </div>
+
+            <!-- Win Card 2 -->
+            <div class="win-card">
+    <img src="images/delft-win.png" alt="Accepted to Delft University of Technology" class="win-image">
+    <i class="fas fa-university win-icon"></i>
+    <div class="win-content">
+        <div class="win-date">Spring 2023</div>
+        <h3 class="win-title">Admitted to Delft University of Technology</h3>
+        <p class="win-description">
+            Accepted to Delft University of Technology (TU Delft), the highest-ranked university in the Netherlands and ranked among the <strong>top 50 universities worldwide</strong>. In the <strong>QS 2025 rankings</strong>, TU Delft is placed <strong>top 14 globally in Engineering &amp; Technology</strong>.
+        </p>
+        <p class="win-description">
+            I ultimately chose not to attend due to financial considerations after receiving a significantly more affordable offer from Leiden University.
+        </p>
+    </div>
+</div>
+
+
+            <div class="win-card">
+    <img src="images/maastricht-win.png" alt="Maastricht University Academic Recognition" class="win-image">
+    <i class="fas fa-university win-icon"></i>
+    <div class="win-content">
+        <div class="win-date">Summer 2022</div>
+        <h3 class="win-title">Recognition Beyond Formal Criteria</h3>
+        <p class="win-description">
+            After leaving Ukraine in 2022, I applied to Dutch universities and was initially rejected by Maastricht University due to formal entry requirements (11 vs. 12 years of schooling).
+        </p>
+        <p class="win-description">
+            After passing the <strong>OMPT-D</strong> mathematics exam with a <strong>95%</strong> score and sharing the result, an admissions officer later reached out, acknowledging the result and noting that my mathematical background made me a strong fit despite the original rejection.
+        </p>
+    </div>
+</div>
+
+            <!-- Add more win cards as needed -->
+        </div>
+    </section>
+
     <!-- Footer -->
     <footer>
-        <p>&copy; 2026 Maksym Lytovka. All rights reserved.</p>
+        <p>&copy; 2026 Max Lytovka. All rights reserved.</p>
     </footer>
 
     <script>
