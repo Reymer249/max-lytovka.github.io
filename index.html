@@ -1218,7 +1218,6 @@
                 type: "Professional",
                 description: "Developed optimization methods for machine learning models as part of Cornell Tech coursework, focusing on gradient-based and stochastic optimization techniques.",
                 skills: ["Python", "AWS/Google Cloud", "AWS S3/Cloud Storage", "python-telegram-bot", "Webhooks"],
-                linkedTo: ["edu-cornell"],
                 image: "project1.jpg",
                 projectUrl: "#"
             },
@@ -1280,7 +1279,7 @@
 
             noResults.classList.add('hidden');
             container.innerHTML = filteredProjects.map(project => {
-                const links = project.linkedTo.map(id => {
+                const links = project.linkedTo ? project.linkedTo.map(id => {
                     const element = document.getElementById(id);
                     if (!element) return '';
                     
@@ -1294,7 +1293,7 @@
                             ${title}
                         </a>
                     `;
-                }).join('');
+                }).join('') : '';
                 
                 const externalLink = project.projectUrl ? `
                     <a href="${project.projectUrl}" class="project-external-link" target="_blank" rel="noopener noreferrer">
