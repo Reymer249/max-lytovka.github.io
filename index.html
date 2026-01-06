@@ -366,6 +366,40 @@
             display: none;
         }
 
+        .skills-container.collapsed .skill-tag:nth-child(n+21) {
+            display: none;
+        }
+
+        .toggle-skills {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.6rem 1.3rem;
+            background: #ffffff;
+            border: 1px solid #d9d9d9;
+            border-radius: 0;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-size: 0.9rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-bottom: 2rem;
+            color: #353535;
+        }
+
+        .toggle-skills:hover {
+            background: #f8f8f8;
+            border-color: #353535;
+        }
+
+        .toggle-skills i {
+            transition: transform 0.3s ease;
+        }
+
+        .toggle-skills.expanded i {
+            transform: rotate(180deg);
+        }
+
         .skill-count {
             background: rgba(60, 110, 113, 0.15);
             color: #3c6e71;
@@ -1044,7 +1078,12 @@
             <input type="text" id="skillSearch" placeholder="Search skills...">
         </div>
 
-        <div class="skills-container" id="skillsContainer"></div>
+        <div class="skills-container collapsed" id="skillsContainer"></div>
+
+        <button class="toggle-skills" id="toggleSkills">
+            <span class="toggle-text">Show More Skills</span>
+            <i class="fas fa-chevron-down"></i>
+        </button>
 
         <button class="clear-filters hidden" id="clearFilters">
             <i class="fas fa-times"></i> Clear All Filters
@@ -1477,6 +1516,22 @@
                 if (!isClickInsideNav && navMenu.classList.contains('active')) {
                     hamburger.classList.remove('active');
                     navMenu.classList.remove('active');
+                }
+            });
+
+            // Toggle skills visibility
+            document.getElementById('toggleSkills').addEventListener('click', () => {
+                const container = document.getElementById('skillsContainer');
+                const button = document.getElementById('toggleSkills');
+                const text = button.querySelector('.toggle-text');
+                
+                container.classList.toggle('collapsed');
+                button.classList.toggle('expanded');
+                
+                if (container.classList.contains('collapsed')) {
+                    text.textContent = 'Show More Skills';
+                } else {
+                    text.textContent = 'Show Less Skills';
                 }
             });
         }
