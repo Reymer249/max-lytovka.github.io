@@ -1197,9 +1197,10 @@
                 description: [
                     "At Datargy, I led the development of a <strong>forecasting system to predict Day-Ahead Market</strong> electricity prices for Eastern Europe, focusing on Ukraine and Slovakia. With no existing benchmarks, I evaluated and refined various machine learning and statistical models, including NeuralProphet, XGBoost, CatBoost, and recurrent neural networks, to deliver accurate time series forecasts <strong>up to 40 days ahead</strong>. This culminated in deploying <strong>more than 130 production models</strong> on Google Cloud Run, generating <strong>over 280 daily forecasts</strong> that supported critical trading decisions during key auctions.",
                     "To enhance operational efficiency and transparency, I <strong>automated data preprocessing</strong> and implemented a comprehensive <strong>model monitoring framework</strong>, producing daily performance reports that reduced manual workload from hours to minutes. Beyond technical contributions, I <strong>engaged directly with prospective clients</strong> by leading <strong>product demonstrations and articulating the modeling methodology</strong>, supporting <strong>early-stage business development.</strong>",
-                    "As <strong>SCRUM Master for an eight-person cross-functional team</strong>, I optimized sprint meetings and improved project management workflows, boosting team productivity and delivery consistency. These efforts established a robust, scalable forecasting platform that elevated Datargy’s data capabilities and positioned the company for successful client acquisition in a complex, data-driven market."
+                    "As <strong>SCRUM Master for an eight-person cross-functional team</strong>, I optimized sprint meetings and improved project management workflows, boosting team productivity and delivery consistency. These efforts established a robust, scalable forecasting platform that elevated Datargy’s data capabilities and positioned the company for successful client acquisition in a complex, data-driven market.",
+                    "If you press the \"View Project\" button below, you will be redirected to the company’s website. After the data loads, you can explore our forecasts for the Slovakia Day-Ahead Market alongside the original market prices from the past two weeks. The interactive dashboards allow you to analyze and compare the data, and All forecasted Day-Ahead Market values shown there were produced by the models I developed."
                 ],
-                skills: ["Python", "Machine Learning", "Time Series", "XGBoost", "Neural Networks", "Google Cloud", "Data Pipeline"],
+                skills: ["Time Series", "Machine Learning", "CatBoost", "XGBoost", "Deep Learning / Neural Networks", "AWS / Google Cloud", "AWS Lambda / Cloud Functions", "Data Pipeline", "Data Visualization", "Plotly", "Python"],
                 linkedTo: ["exp-datargy"],
                 image: "images/datargy-forecasts.png",
                 projectUrl: "https://datargy.com/dashboards?id=a9bad300-70c2-4fc9-81bb-5de9276522fd"
@@ -1213,33 +1214,45 @@
                     "I worked as a backend data engineer responsible for <strong>designing and implementing the analytical data infrastructure</strong> supporting this research. Using Python, NumPy, Pandas, SciPy, and Postgres, I <strong>built data pipelines to process over 4.3 million OHLCV data points across more than 30 cryptocurrencies</strong>. I implemented standardized performance analytics — including Sharpe and Sortino ratios, CAGR, alpha, drawdowns, volatility, and win rates — across a hierarchy of approximately <strong>150 signals, over 1,200 filtered strategies, and 100+ portfolios</strong>. I also contributed to portfolio-level backtesting, cross-market analysis, and expansion beyond Bitcoin into additional assets such as ETH and SOL.",
                     "The resulting system enabled systematic <strong>comparison and monitoring of thousands of signal-strategy-portfolio combinations</strong> through <strong>interactive dashboards</strong> built with Flask and Plotly. These tools supported portfolio research and selection, helping <strong>identify strategies with sustained outperformance and improved risk-adjusted returns</strong>, and provided transparency into performance attribution, diversification effects, and downside risk. Through close collaboration with the lead trader and CTO, the platform became a core component of the firm’s quantitative research and portfolio construction workflow."
                 ],
-                skills: ["Python", "SQL", "Data Engineering", "Flask", "Plotly", "AWS/Google Cloud", "AWS Lambda/Cloud Functions", "Real-time Systems"],
+                skills: ["Data Engineering", "SQL", "ETL", "Flask", "Data Visualization", "Plotly", "AWS / Google Cloud", "AWS Lambda / Cloud Functions", "Real-time Systems", "Python"],
                 linkedTo: ["exp-algozeus"],
                 image: "images/algozeus_platform.png",
-                projectUrl: "#"
             },
             {
                 id: 3,
                 title: "Computer Vision Research Project",
                 type: "Academic",
-                description: "Bachelor thesis research project in computer vision, working with faculty research groups at LIACS.",
-                skills: ["Python", "Computer Vision", "Deep Learning", "Research", "PyTorch", "CUDA", "Linux"],
+                description: "Performance on aggregate benchmarks can mask fragile behavior under small, structured perturbations, a pattern common to both predictive models and real-world decision systems. Motivated by this, my bachelor’s thesis at Leiden University focused on understanding and improving the <strong>semantic robustness of video–text retrieval models</strong>. I designed and <strong>ran a structured experimental program around X-CLIP</strong>, systematically comparing rule-based linguistic augmentations with LLM-generated hard positives and negatives. I <strong>built a scalable training and evaluation pipeline spanning heterogeneous GPU servers and SLURM clusters</strong>, handling CUDA configuration, multi-GPU execution, and experiment tracking with Weights & Biases while orchestrating large experiment grids through automated scripts. Beyond standard retrieval metrics, I developed a fine-grained evaluation framework incorporating PosRank and Brittleness to explicitly measure model behavior under small textual perturbations. This approach led to <strong>consistent and interpretable gains, including 2–4.5× improvements in PosRank, over 2× reduction in brittleness, and double-digit improvements in mean rank for text-to-video retrieval</strong>, while yielding clear insights into when and why LLM-driven data augmentation outperforms rule-based methods.",
+                skills: ["Computer Vision", "Video-Text Retrieval", "X-CLIP", "Deep Learning / Neural Networks", "Convolutional Neural Networks", "Research", "PyTorch", "CUDA", "Linux", "SLURM", "Python"],
                 linkedTo: ["edu-leiden"],
                 image: "images/thesis.png",
                 projectUrl: "https://theses.liacs.nl/3264"
             },
             {
                 id: 4,
-                title: "Minitorch",
+                title: "Minitorch: Custom CUDA-Accelerated Deep Learning Framework",
                 type: "Academic",
-                description: "Bachelor thesis research project in computer vision, working with faculty research groups at LIACS.",
-                skills: ["Python", "Computer Vision", "Deep Learning", "Research", "PyTorch", "CUDA", "Linux"],
+                description: [
+                    "Developed as part of a Machine Learning Engineering course, this project involved building a minimalist deep learning framework from scratch in Python, including tensors, automatic differentiation, and optimization modules. It features <strong>efficient CUDA-enabled operations such as zip, map, and convolutions for GPU acceleration</strong>. Using the framework, I trained a neural network that <strong>successfully classified the MNIST dataset</strong>. This hands-on project deepened my understanding of deep learning fundamentals, computational graphs, and hardware-aware optimizations.",
+                    "Pressing the \"View Project\" button below will open the project website developed by our professors. The code for this project is available on my GitHub, but the repository is private and cannot be shared publicly."
+                ],
+                skills: ["Machine Learning Engineering", "Deep Learning / Neural Networks", "PyTorch", "CUDA", "Automatic Differentiation / Autograd", "Convolutional Neural Networks"],
                 linkedTo: ["edu-leiden"],
                 image: "images/minitorch.png",
-                projectUrl: "https://theses.liacs.nl/3264"
+                projectUrl: "https://minitorch.github.io/"
             },
             {
                 id: 5,
+                title: "Cost Efficient Gesture Classification",
+                type: "Academic",
+                description: "Designed and implemented an efficient <strong>hand gesture recognition system</strong> using video segmentation and feature extraction with a pretrained ResNeXt-101 model. By training a streamlined multi-layer perceptron to classify gestures from selected video frames, I <strong>optimized model architecture and data sampling to achieve strong accuracy while minimizing computational requirements</strong>. The solution balances performance and resource efficiency, demonstrating practical skills in machine learning model development, optimization, and deployment for real-time applications.",
+                skills: ["Python", "Computer Vision", "Deep Learning", "Research", "PyTorch", "CUDA", "Linux"],
+                linkedTo: ["edu-leiden"],
+                image: "images/gesture_recognition.png",
+                projectUrl: "https://github.com/Reymer249/Computer-Vision_Gesture-Classification/blob/main/report.pdf"
+            },
+            {
+                id: 6,
                 title: "Military Telegram Bot",
                 type: "Professional",
                 description: [
@@ -1248,24 +1261,24 @@
                     "After gathering the requirements directly from Serhii, I independently <strong>designed and implemented an end-to-end solution</strong> using Python, the python-telegram-bot library, and AWS infrastructure. An initial deployment on AWS Lambda proved too slow in practice, so I migrated the system to an AWS Lightsail server to achieve the necessary responsiveness and stability.", 
                     "The system is now running in production, storing <strong>gigabytes of information</strong> and serving <strong>over 150,000 users</strong> connected to Serhii’s channel, including military personnel and civilians providing actionable information for the Ukrainian army. While technical details cannot be publicly shared, the project represents a real-world, high-impact system built and operated at scale."
                 ],
-                skills: ["Python", "AWS/Google Cloud", "AWS S3/Cloud Storage", "python-telegram-bot", "Webhooks"],
-                image: "project1.jpg",
+                skills: ["Python", "AWS / Google Cloud", "AWS S3 / Cloud Storage", "python-telegram-bot", "Webhooks"],
+                image: "images/serhii_bot.png",
                 projectUrl: "https://t.me/serhii_flash_contact_bot"
             },
             {
-                id: 6,
+                id: 7,
                 title: "Portfolio Tracking Telegram Bot",
                 type: "Professional",
                 description: [
                     "At AlgoZeus, tracking <strong>real-time portfolio updates and trade signals</strong> was a challenge, causing delays in decision-making. I was responsible for creating a system that delivered timely notifications to the team, improving communication and responsiveness.", 
                     "I developed a Telegram bot in Python using <strong>asynchronous programming and webhooks</strong>, integrated with the existing analytics backend, and deployed it on AWS Lambda. The bot handled updates and alerts for approximately <strong>100 portfolios, delivering buy/sell signals and performance summaries across daily, 4-hour, and 1-hour intervals</strong>. This solution significantly reduced monitoring latency, enabling faster and more informed trading decisions while maintaining high reliability with minimal operational overhead."
                 ],
-                skills: ["Python", "AWS/Google Cloud", "AWS Lambda/Cloud Functions", "Plotly", "python-telegram-bot", "Webhooks"],
+                skills: ["Python", "AWS / Google Cloud", "AWS Lambda / Cloud Functions", "Plotly", "python-telegram-bot", "Webhooks"],
                 image: "images/algozeus_bot.png",
                 projectUrl: null
             },
             {
-                id: 7,
+                id: 8,
                 title: "AI Voice Analytics Startup (Venture Validation Project)",
                 type: "Academic",
                 description: [
