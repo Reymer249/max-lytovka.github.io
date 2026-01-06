@@ -1194,7 +1194,11 @@
                 id: 1,
                 title: "Electricity Price Forecasting System",
                 type: "Professional",
-                description: "Researched and developed time series forecasting models using NeuralProphet, XGBoost, CatBoost, and RNNs to predict electricity prices. Deployed on Google Cloud Run with automated monitoring pipelines.",
+                description: [
+                    "At Datargy, I led the development of a <strong>forecasting system to predict Day-Ahead Market</strong> electricity prices for Eastern Europe, focusing on Ukraine and Slovakia. With no existing benchmarks, I evaluated and refined various machine learning and statistical models, including NeuralProphet, XGBoost, CatBoost, and recurrent neural networks, to deliver accurate time series forecasts <strong>up to 40 days ahead</strong>. This culminated in deploying <strong>more than 130 production models</strong> on Google Cloud Run, generating <strong>over 280 daily forecasts</strong> that supported critical trading decisions during key auctions.",
+                    "To enhance operational efficiency and transparency, I <strong>automated data preprocessing</strong> and implemented a comprehensive <strong>model monitoring framework</strong>, producing daily performance reports that reduced manual workload from hours to minutes. Beyond technical contributions, I <strong>engaged directly with prospective clients</strong> by leading <strong>product demonstrations and articulating the modeling methodology</strong>, supporting <strong>early-stage business development.</strong>",
+                    "As <strong>SCRUM Master for an eight-person cross-functional team</strong>, I optimized sprint meetings and improved project management workflows, boosting team productivity and delivery consistency. These efforts established a robust, scalable forecasting platform that elevated Datargy’s data capabilities and positioned the company for successful client acquisition in a complex, data-driven market."
+                ],
                 skills: ["Python", "Machine Learning", "Time Series", "XGBoost", "Neural Networks", "Google Cloud", "Data Pipeline"],
                 linkedTo: ["exp-datargy"],
                 image: "images/datargy-forecasts.png",
@@ -1206,12 +1210,12 @@
                 type: "Professional",
                 description: [
                     "At AlgoZeus, a digital-assets fund developing quantitative portfolio strategies, the primary challenge was evaluating large numbers of trading ideas in a consistent, data-driven way rather than executing trades in real time. The team needed a scalable analytics platform to measure performance, compare strategies, and understand risk across markets and timeframes.",
-                    "I worked as a backend data engineer responsible for designing and implementing the analytical data infrastructure supporting this research. Using Python, NumPy, Pandas, SciPy, and Postgres, I built data pipelines to process over 4.3 million OHLCV data points across more than 30 cryptocurrencies. I implemented standardized performance analytics — including Sharpe and Sortino ratios, CAGR, alpha, drawdowns, volatility, and win rates — across a hierarchy of approximately 150 signals, over 1,200 filtered strategies, and 100+ portfolios. I also contributed to portfolio-level backtesting, cross-market analysis, and expansion beyond Bitcoin into additional assets such as ETH and SOL.",
-                    "The resulting system enabled systematic comparison and monitoring of thousands of signal-strategy-portfolio combinations through interactive dashboards built with Flask and Plotly. These tools supported portfolio research and selection, helping identify strategies with sustained outperformance and improved risk-adjusted returns, and provided transparency into performance attribution, diversification effects, and downside risk. Through close collaboration with the lead trader and CTO, the platform became a core component of the firm’s quantitative research and portfolio construction workflow."
+                    "I worked as a backend data engineer responsible for <strong>designing and implementing the analytical data infrastructure</strong> supporting this research. Using Python, NumPy, Pandas, SciPy, and Postgres, I <strong>built data pipelines to process over 4.3 million OHLCV data points across more than 30 cryptocurrencies</strong>. I implemented standardized performance analytics — including Sharpe and Sortino ratios, CAGR, alpha, drawdowns, volatility, and win rates — across a hierarchy of approximately <strong>150 signals, over 1,200 filtered strategies, and 100+ portfolios</strong>. I also contributed to portfolio-level backtesting, cross-market analysis, and expansion beyond Bitcoin into additional assets such as ETH and SOL.",
+                    "The resulting system enabled systematic <strong>comparison and monitoring of thousands of signal-strategy-portfolio combinations</strong> through <strong>interactive dashboards</strong> built with Flask and Plotly. These tools supported portfolio research and selection, helping <strong>identify strategies with sustained outperformance and improved risk-adjusted returns</strong>, and provided transparency into performance attribution, diversification effects, and downside risk. Through close collaboration with the lead trader and CTO, the platform became a core component of the firm’s quantitative research and portfolio construction workflow."
                 ],
                 skills: ["Python", "SQL", "Data Engineering", "Flask", "Plotly", "AWS/Google Cloud", "AWS Lambda/Cloud Functions", "Real-time Systems"],
                 linkedTo: ["exp-algozeus"],
-                image: "project2.jpg",
+                image: "images/algozeus_platform.png",
                 projectUrl: "#"
             },
             {
@@ -1226,36 +1230,46 @@
             },
             {
                 id: 4,
+                title: "Minitorch",
+                type: "Academic",
+                description: "Bachelor thesis research project in computer vision, working with faculty research groups at LIACS.",
+                skills: ["Python", "Computer Vision", "Deep Learning", "Research", "PyTorch", "CUDA", "Linux"],
+                linkedTo: ["edu-leiden"],
+                image: "images/minitorch.png",
+                projectUrl: "https://theses.liacs.nl/3264"
+            },
+            {
+                id: 5,
                 title: "Military Telegram Bot",
                 type: "Professional",
                 description: [
                     "This project began when Serhii, an officer in the Ukrainian military working in Electronic and Signal Intelligence, contacted me with a practical problem. He ran a popular Telegram channel used mainly by other soldiers, who needed a safe way to share feedback, ask for technical expertise, and exchange sensitive information about enemy positions and hostile technologies. Existing communication methods were vulnerable to spam, flooding attempts, and potential interference by hostile actors.", 
-                    "The challenge was to build a secure, reliable communication channel with strong account filtering and spam resistance, while remaining easy to use in active operational conditions. Confidentiality, availability, and speed were all critical.", 
-                    "After gathering the requirements directly from Serhii, I independently designed and implemented an end-to-end solution using Python, the python-telegram-bot library, and AWS infrastructure. An initial deployment on AWS Lambda proved too slow in practice, so I migrated the system to an AWS Lightsail server to achieve the necessary responsiveness and stability.", 
-                    "The system is now running in production, storing gigabytes of information and serving over 150,000 users connected to Serhii’s channel, including military personnel and civilians providing actionable information for the Ukrainian army. While technical details cannot be publicly shared, the project represents a real-world, high-impact system built and operated at scale."
+                    "The challenge was to build a <strong>secure, reliable communication channel</strong> with strong account filtering and spam resistance, while remaining easy to use in active operational conditions. Confidentiality, availability, and speed were all critical.", 
+                    "After gathering the requirements directly from Serhii, I independently <strong>designed and implemented an end-to-end solution</strong> using Python, the python-telegram-bot library, and AWS infrastructure. An initial deployment on AWS Lambda proved too slow in practice, so I migrated the system to an AWS Lightsail server to achieve the necessary responsiveness and stability.", 
+                    "The system is now running in production, storing <strong>gigabytes of information</strong> and serving <strong>over 150,000 users</strong> connected to Serhii’s channel, including military personnel and civilians providing actionable information for the Ukrainian army. While technical details cannot be publicly shared, the project represents a real-world, high-impact system built and operated at scale."
                 ],
                 skills: ["Python", "AWS/Google Cloud", "AWS S3/Cloud Storage", "python-telegram-bot", "Webhooks"],
                 image: "project1.jpg",
                 projectUrl: "https://t.me/serhii_flash_contact_bot"
             },
             {
-                id: 5,
+                id: 6,
                 title: "Portfolio Tracking Telegram Bot",
                 type: "Professional",
                 description: [
-                    "At AlgoZeus, tracking real-time portfolio updates and trade signals was a challenge, causing delays in decision-making. I was responsible for creating a system that delivered timely notifications to the team, improving communication and responsiveness.", 
-                    "I developed a Telegram bot in Python using asynchronous programming and webhooks, integrated with the existing analytics backend, and deployed it on AWS Lambda. The bot handled updates and alerts for approximately 100 portfolios, delivering buy/sell signals and performance summaries across daily, 4-hour, and 1-hour intervals. This solution significantly reduced monitoring latency, enabling faster and more informed trading decisions while maintaining high reliability with minimal operational overhead."
+                    "At AlgoZeus, tracking <strong>real-time portfolio updates and trade signals</strong> was a challenge, causing delays in decision-making. I was responsible for creating a system that delivered timely notifications to the team, improving communication and responsiveness.", 
+                    "I developed a Telegram bot in Python using <strong>asynchronous programming and webhooks</strong>, integrated with the existing analytics backend, and deployed it on AWS Lambda. The bot handled updates and alerts for approximately <strong>100 portfolios, delivering buy/sell signals and performance summaries across daily, 4-hour, and 1-hour intervals</strong>. This solution significantly reduced monitoring latency, enabling faster and more informed trading decisions while maintaining high reliability with minimal operational overhead."
                 ],
                 skills: ["Python", "AWS/Google Cloud", "AWS Lambda/Cloud Functions", "Plotly", "python-telegram-bot", "Webhooks"],
-                image: "project1.jpg",
+                image: "images/algozeus_bot.png",
                 projectUrl: null
             },
             {
-                id: 6,
+                id: 7,
                 title: "AI Voice Analytics Startup (Venture Validation Project)",
                 type: "Academic",
                 description: [
-                    "During the Entrepreneurship minor at the University of Amsterdam, I worked with a small team on an early-stage AI startup in the voice-processing space. We aimed to help companies extract value from large volumes of unstructured voice data—such as interviews, sales calls, and customer support recordings—by transforming them into structured, actionable insights. The proposed product centered on a unified dashboard that surfaced sentiment trends, recurring issues, and performance signals across teams. Alongside the product concept, we conducted market research, competitive analysis, and built financial projections to evaluate feasibility.",
+                    "During the Entrepreneurship minor at the University of Amsterdam, I worked with a small team on an early-stage AI startup in the voice-processing space. We aimed to help companies extract value from large volumes of unstructured voice data, including interviews, sales calls, and customer support recordings, by transforming them into structured, actionable insights. The <strong>proposed product centered on a unified dashboard that surfaced sentiment trends, recurring issues, and performance signals across teams</strong>. Alongside the <strong>product concept, we conducted market research, competitive analysis, and built financial projections</strong> to evaluate feasibility.",
                     "As validation progressed, we encountered a highly saturated market dominated by well-funded competitors, combined with limited resources for sustained R&D. Based on these constraints, we made a data-driven decision to discontinue the venture. The experience offered practical insight into venture ideation, market validation, and the importance of recognizing when abandoning an idea is the most rational outcome."
                 ],
                 skills: ["Entrepreneurship", "Market Research", "Natural Language Processing (NLP)"],
