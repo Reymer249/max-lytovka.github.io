@@ -1406,7 +1406,7 @@
             const filteredProjects = selectedSkills.size === 0 
                 ? projectsData 
                 : projectsData.filter(project => 
-                    [...selectedSkills].every(skill => project.skills.includes(skill))
+                    [...selectedSkills].some(skill => project.skills.includes(skill))
                 );
 
             if (filteredProjects.length === 0) {
